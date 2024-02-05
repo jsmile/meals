@@ -28,7 +28,8 @@ class _TabsScreenState extends State<TabsScreen> {
     var activePageTitle = 'Categories';
 
     if (_selectedPageIndex == 1) {
-      activePage = const MealsScreen(meals: []); // TabBar 선택으로 이동할 때는 title 없이
+      // Scaffold 를 사용하지 않으므로 title 미사용
+      activePage = const MealsScreen(meals: []);
       activePageTitle = 'Your Favorites';
     }
 
@@ -36,7 +37,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
-      body: activePage,
+      body: activePage, // tab 선택에 따라 activePage 변경
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,
