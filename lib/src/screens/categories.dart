@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../data/dummy_data.dart';
 import '../models/category.dart';
+import '../models/meal.dart';
 import '../widgets/category_grid_item.dart';
 import 'meals.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  final Function(Meal meal) onToggleFavorite;
+
+  const CategoriesScreen({
+    super.key,
+    required this.onToggleFavorite,
+  });
 
   void _selectCategory(BuildContext context, Category category) {
     final filteredMeals = dummyMeals
@@ -19,6 +25,7 @@ class CategoriesScreen extends StatelessWidget {
           // scaffold 사용을 위해 title을 전달
           title: category.title,
           meals: filteredMeals,
+          onToggleFavorite: onToggleFavorite,
         ),
       ),
     ); // Navigator.push(context, route)

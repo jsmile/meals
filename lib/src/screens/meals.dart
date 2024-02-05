@@ -5,10 +5,13 @@ import '../widgets/meal_item.dart';
 import 'meal_details.dart';
 
 class MealsScreen extends StatelessWidget {
+  final Function(Meal meal) onToggleFavorite;
+
   const MealsScreen({
     super.key,
     this.title, // title 여부에 따라 Scaffold를 사용할지 여부를 결정하므로 필수가 아닌 선택으로 선언
     required this.meals,
+    required this.onToggleFavorite,
   });
 
   final String? title; // title 여부에 따라 Scaffold를 사용할지 여부를 결정.
@@ -19,6 +22,7 @@ class MealsScreen extends StatelessWidget {
       MaterialPageRoute(
         builder: (ctx) => MealDetailsScreen(
           meal: meal,
+          onToggleFavorite: onToggleFavorite,
         ),
       ),
     );
