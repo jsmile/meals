@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'categories.dart';
 import 'meals.dart';
 
+// setState() 사용이 필요함으로 StatefulWidget을 상속받아야 한다.
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
 
@@ -27,7 +28,7 @@ class _TabsScreenState extends State<TabsScreen> {
     var activePageTitle = 'Categories';
 
     if (_selectedPageIndex == 1) {
-      activePage = const MealsScreen(meals: []);
+      activePage = const MealsScreen(meals: []); // TabBar 선택으로 이동할 때는 title 없이
       activePageTitle = 'Your Favorites';
     }
 
