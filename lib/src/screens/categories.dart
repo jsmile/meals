@@ -8,14 +8,17 @@ import 'meals.dart';
 
 class CategoriesScreen extends StatelessWidget {
   final Function(Meal meal) onToggleFavorite;
+  final List<Meal> availableMeals; // filters 가 반영된 meals
 
   const CategoriesScreen({
     super.key,
     required this.onToggleFavorite,
+    required this.availableMeals,
   });
 
+  // filters 가 반영된 meals 에서 category 가 맞는 화면으로 이동
   void _selectCategory(BuildContext context, Category category) {
-    final filteredMeals = dummyMeals
+    final filteredMeals = availableMeals
         .where((meal) => meal.categories.contains(category.id))
         .toList();
 
